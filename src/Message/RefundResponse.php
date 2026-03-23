@@ -15,67 +15,67 @@ use Psr\Http\Message\ResponseInterface;
  */
 class RefundResponse extends AbstractResponse
 {
-	protected $response;
+    protected $response;
 
-	protected $request;
+    protected $request;
 
-	public function __construct(RequestInterface $request, $data)
-	{
-		parent::__construct($request, $data);
+    public function __construct(RequestInterface $request, $data)
+    {
+        parent::__construct($request, $data);
 
-		$this->request = $request;
+        $this->request = $request;
 
-		$this->response = $data;
+        $this->response = $data;
 
-		if ($data instanceof ResponseInterface) {
+        if ($data instanceof ResponseInterface) {
 
-			$body = (string)$data->getBody();
+            $body = (string) $data->getBody();
 
-			try {
+            try {
 
-				$this->response = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
+                $this->response = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
-			} catch (JsonException $e) {
+            } catch (JsonException $e) {
 
-				$this->response = [
-					'code'    => -1,
-					'message' => $body,
-				];
+                $this->response = [
+                    'code' => -1,
+                    'message' => $body,
+                ];
 
-			}
+            }
 
-		}
-	}
+        }
+    }
 
-	public function isSuccessful(): bool
-	{
-		$code = $this->response['code'] ?? -1;
+    public function isSuccessful(): bool
+    {
+        $code = $this->response['code'] ?? -1;
 
-		return $code === ResultCode::SUCCESS || $code === ResultCode::SUCCESS_ALT;
-	}
+        return $code === ResultCode::SUCCESS || $code === ResultCode::SUCCESS_ALT;
+    }
 
-	public function getMessage(): ?string
-	{
-		return $this->response['message'] ?? null;
-	}
+    public function getMessage(): ?string
+    {
+        return $this->response['message'] ?? null;
+    }
 
-	public function getData(): array
-	{
-		return is_array($this->response) ? $this->response : [];
-	}
+    public function getData(): array
+    {
+        return is_array($this->response) ? $this->response : [];
+    }
 
-	public function getCode(): ?string
-	{
-		return isset($this->response['code']) ? (string)$this->response['code'] : null;
-	}
+    public function getCode(): ?string
+    {
+        return isset($this->response['code']) ? (string) $this->response['code'] : null;
+    }
 
-	public function getRedirectData()
-	{
-		return null;
-	}
+    public function getRedirectData()
+    {
+        return null;
+    }
 
-	public function getRedirectUrl(): string
-	{
-		return '';
-	}
+    public function getRedirectUrl(): string
+    {
+        return '';
+    }
 }

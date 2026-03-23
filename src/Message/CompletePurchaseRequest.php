@@ -16,49 +16,49 @@ use Omnipay\Paynet\Traits\GettersSettersTrait;
  */
 class CompletePurchaseRequest extends RemoteAbstractRequest
 {
-	use GettersSettersTrait;
+    use GettersSettersTrait;
 
-	protected $endpoint = '/v2/transaction/tds_charge';
+    protected $endpoint = '/v2/transaction/tds_charge';
 
-	/**
-	 * @throws InvalidRequestException
-	 */
-	public function getData(): array
-	{
-		$this->validateAll();
+    /**
+     * @throws InvalidRequestException
+     */
+    public function getData(): array
+    {
+        $this->validateAll();
 
-		return [
-			'session_id'       => $this->getSessionId(),
-			'token_id'         => $this->getTokenId(),
-			'transaction_type' => TransactionType::SALE,
-		];
-	}
+        return [
+            'session_id' => $this->getSessionId(),
+            'token_id' => $this->getTokenId(),
+            'transaction_type' => TransactionType::SALE,
+        ];
+    }
 
-	/**
-	 * @throws InvalidRequestException
-	 */
-	protected function validateAll(): void
-	{
-		$this->validateSettings();
+    /**
+     * @throws InvalidRequestException
+     */
+    protected function validateAll(): void
+    {
+        $this->validateSettings();
 
-		$this->validate("sessionId", "tokenId");
-	}
+        $this->validate('sessionId', 'tokenId');
+    }
 
-	/**
-	 * @param array $data
-	 * @return ResponseInterface|CompletePurchaseResponse
-	 */
-	public function sendData($data)
-	{
-		$url = $this->getBaseUrl() . $this->endpoint;
+    /**
+     * @param array $data
+     * @return ResponseInterface|CompletePurchaseResponse
+     */
+    public function sendData($data)
+    {
+        $url = $this->getBaseUrl() . $this->endpoint;
 
-		$httpResponse = $this->sendRequest($data, $url);
+        $httpResponse = $this->sendRequest($data, $url);
 
-		return $this->createResponse($httpResponse);
-	}
+        return $this->createResponse($httpResponse);
+    }
 
-	protected function createResponse($data): CompletePurchaseResponse
-	{
-		return $this->response = new CompletePurchaseResponse($this, $data);
-	}
+    protected function createResponse($data): CompletePurchaseResponse
+    {
+        return $this->response = new CompletePurchaseResponse($this, $data);
+    }
 }

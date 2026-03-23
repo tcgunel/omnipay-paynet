@@ -16,48 +16,48 @@ use Omnipay\Paynet\Traits\GettersSettersTrait;
  */
 class RefundRequest extends RemoteAbstractRequest
 {
-	use GettersSettersTrait;
+    use GettersSettersTrait;
 
-	protected $endpoint = '/v1/transaction/reversed_request';
+    protected $endpoint = '/v1/transaction/reversed_request';
 
-	/**
-	 * @throws InvalidRequestException
-	 */
-	public function getData(): array
-	{
-		$this->validateAll();
+    /**
+     * @throws InvalidRequestException
+     */
+    public function getData(): array
+    {
+        $this->validateAll();
 
-		return [
-			'xact_id' => $this->getXactId(),
-			'amount'  => Helper::formatAmount($this->getAmount()),
-		];
-	}
+        return [
+            'xact_id' => $this->getXactId(),
+            'amount' => Helper::formatAmount($this->getAmount()),
+        ];
+    }
 
-	/**
-	 * @throws InvalidRequestException
-	 */
-	protected function validateAll(): void
-	{
-		$this->validateSettings();
+    /**
+     * @throws InvalidRequestException
+     */
+    protected function validateAll(): void
+    {
+        $this->validateSettings();
 
-		$this->validate("xactId", "amount");
-	}
+        $this->validate('xactId', 'amount');
+    }
 
-	/**
-	 * @param array $data
-	 * @return ResponseInterface|RefundResponse
-	 */
-	public function sendData($data)
-	{
-		$url = $this->getBaseUrl() . $this->endpoint;
+    /**
+     * @param array $data
+     * @return ResponseInterface|RefundResponse
+     */
+    public function sendData($data)
+    {
+        $url = $this->getBaseUrl() . $this->endpoint;
 
-		$httpResponse = $this->sendRequest($data, $url);
+        $httpResponse = $this->sendRequest($data, $url);
 
-		return $this->createResponse($httpResponse);
-	}
+        return $this->createResponse($httpResponse);
+    }
 
-	protected function createResponse($data): RefundResponse
-	{
-		return $this->response = new RefundResponse($this, $data);
-	}
+    protected function createResponse($data): RefundResponse
+    {
+        return $this->response = new RefundResponse($this, $data);
+    }
 }

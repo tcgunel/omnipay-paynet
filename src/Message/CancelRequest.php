@@ -14,47 +14,47 @@ use Omnipay\Paynet\Traits\GettersSettersTrait;
  */
 class CancelRequest extends RemoteAbstractRequest
 {
-	use GettersSettersTrait;
+    use GettersSettersTrait;
 
-	protected $endpoint = '/v1/transaction/reversed_request';
+    protected $endpoint = '/v1/transaction/reversed_request';
 
-	/**
-	 * @throws InvalidRequestException
-	 */
-	public function getData(): array
-	{
-		$this->validateAll();
+    /**
+     * @throws InvalidRequestException
+     */
+    public function getData(): array
+    {
+        $this->validateAll();
 
-		return [
-			'xact_id' => $this->getXactId(),
-		];
-	}
+        return [
+            'xact_id' => $this->getXactId(),
+        ];
+    }
 
-	/**
-	 * @throws InvalidRequestException
-	 */
-	protected function validateAll(): void
-	{
-		$this->validateSettings();
+    /**
+     * @throws InvalidRequestException
+     */
+    protected function validateAll(): void
+    {
+        $this->validateSettings();
 
-		$this->validate("xactId");
-	}
+        $this->validate('xactId');
+    }
 
-	/**
-	 * @param array $data
-	 * @return ResponseInterface|CancelResponse
-	 */
-	public function sendData($data)
-	{
-		$url = $this->getBaseUrl() . $this->endpoint;
+    /**
+     * @param array $data
+     * @return ResponseInterface|CancelResponse
+     */
+    public function sendData($data)
+    {
+        $url = $this->getBaseUrl() . $this->endpoint;
 
-		$httpResponse = $this->sendRequest($data, $url);
+        $httpResponse = $this->sendRequest($data, $url);
 
-		return $this->createResponse($httpResponse);
-	}
+        return $this->createResponse($httpResponse);
+    }
 
-	protected function createResponse($data): CancelResponse
-	{
-		return $this->response = new CancelResponse($this, $data);
-	}
+    protected function createResponse($data): CancelResponse
+    {
+        return $this->response = new CancelResponse($this, $data);
+    }
 }

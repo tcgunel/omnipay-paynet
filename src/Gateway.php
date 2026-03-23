@@ -29,86 +29,86 @@ use Omnipay\Paynet\Traits\GettersSettersTrait;
  */
 class Gateway extends AbstractGateway
 {
-	use GettersSettersTrait;
+    use GettersSettersTrait;
 
-	public function getName(): string
-	{
-		return 'Paynet';
-	}
+    public function getName(): string
+    {
+        return 'Paynet';
+    }
 
-	public function getDefaultParameters(): array
-	{
-		return [
-			"secretKey"     => "",
-			"installment"   => 1,
-			"addCommission" => false,
-			"testMode"      => false,
-		];
-	}
+    public function getDefaultParameters(): array
+    {
+        return [
+            'secretKey' => '',
+            'installment' => 1,
+            'addCommission' => false,
+            'testMode' => false,
+        ];
+    }
 
-	/**
-	 * Direct (non-3D) sale.
-	 *
-	 * @param array $options
-	 * @return AbstractRequest|PurchaseRequest
-	 */
-	public function purchase(array $options = []): AbstractRequest
-	{
-		return $this->createRequest(PurchaseRequest::class, $options);
-	}
+    /**
+     * Direct (non-3D) sale.
+     *
+     * @param array $options
+     * @return AbstractRequest|PurchaseRequest
+     */
+    public function purchase(array $options = []): AbstractRequest
+    {
+        return $this->createRequest(PurchaseRequest::class, $options);
+    }
 
-	/**
-	 * 3D Secure sale initiation.
-	 *
-	 * @param array $options
-	 * @return AbstractRequest|Purchase3dRequest
-	 */
-	public function purchase3d(array $options = []): AbstractRequest
-	{
-		return $this->createRequest(Purchase3dRequest::class, $options);
-	}
+    /**
+     * 3D Secure sale initiation.
+     *
+     * @param array $options
+     * @return AbstractRequest|Purchase3dRequest
+     */
+    public function purchase3d(array $options = []): AbstractRequest
+    {
+        return $this->createRequest(Purchase3dRequest::class, $options);
+    }
 
-	/**
-	 * Complete a 3D Secure purchase (tds_charge).
-	 *
-	 * @param array $options
-	 * @return AbstractRequest|CompletePurchaseRequest
-	 */
-	public function completePurchase(array $options = []): AbstractRequest
-	{
-		return $this->createRequest(CompletePurchaseRequest::class, $options);
-	}
+    /**
+     * Complete a 3D Secure purchase (tds_charge).
+     *
+     * @param array $options
+     * @return AbstractRequest|CompletePurchaseRequest
+     */
+    public function completePurchase(array $options = []): AbstractRequest
+    {
+        return $this->createRequest(CompletePurchaseRequest::class, $options);
+    }
 
-	/**
-	 * Cancel (void) a transaction.
-	 *
-	 * @param array $options
-	 * @return AbstractRequest|CancelRequest
-	 */
-	public function void(array $options = []): AbstractRequest
-	{
-		return $this->createRequest(CancelRequest::class, $options);
-	}
+    /**
+     * Cancel (void) a transaction.
+     *
+     * @param array $options
+     * @return AbstractRequest|CancelRequest
+     */
+    public function void(array $options = []): AbstractRequest
+    {
+        return $this->createRequest(CancelRequest::class, $options);
+    }
 
-	/**
-	 * Refund a transaction (partial or full).
-	 *
-	 * @param array $options
-	 * @return AbstractRequest|RefundRequest
-	 */
-	public function refund(array $options = []): AbstractRequest
-	{
-		return $this->createRequest(RefundRequest::class, $options);
-	}
+    /**
+     * Refund a transaction (partial or full).
+     *
+     * @param array $options
+     * @return AbstractRequest|RefundRequest
+     */
+    public function refund(array $options = []): AbstractRequest
+    {
+        return $this->createRequest(RefundRequest::class, $options);
+    }
 
-	/**
-	 * Query installment rates by BIN number.
-	 *
-	 * @param array $options
-	 * @return AbstractRequest|InstallmentQueryRequest
-	 */
-	public function installmentQuery(array $options = []): AbstractRequest
-	{
-		return $this->createRequest(InstallmentQueryRequest::class, $options);
-	}
+    /**
+     * Query installment rates by BIN number.
+     *
+     * @param array $options
+     * @return AbstractRequest|InstallmentQueryRequest
+     */
+    public function installmentQuery(array $options = []): AbstractRequest
+    {
+        return $this->createRequest(InstallmentQueryRequest::class, $options);
+    }
 }

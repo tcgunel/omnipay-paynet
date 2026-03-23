@@ -1,0 +1,46 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Access to an undefined property Omnipay\\\\Paynet\\\\Gateway\\:\\:\\$endpoint\\.$#"
+			count: 1
+			path: src/Gateway.php
+
+		-
+			message: "#^Method Omnipay\\\\Paynet\\\\Message\\\\CancelResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/CancelResponse.php
+
+		-
+			message: "#^Method Omnipay\\\\Paynet\\\\Message\\\\CompletePurchaseResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/CompletePurchaseResponse.php
+
+		-
+			message: "#^Method Omnipay\\\\Paynet\\\\Message\\\\InstallmentQueryResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/InstallmentQueryResponse.php
+
+		-
+			message: "#^Method Omnipay\\\\Paynet\\\\Message\\\\Purchase3dResponse\\:\\:getRedirectUrl\\(\\) should return string but returns null\\.$#"
+			count: 1
+			path: src/Message/Purchase3dResponse.php
+
+		-
+			message: "#^Method Omnipay\\\\Paynet\\\\Message\\\\PurchaseResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/PurchaseResponse.php
+
+		-
+			message: "#^Method Omnipay\\\\Paynet\\\\Message\\\\RefundResponse\\:\\:getRedirectData\\(\\) should return array but returns null\\.$#"
+			count: 1
+			path: src/Message/RefundResponse.php
+
+		-
+			message: "#^Access to an undefined property Omnipay\\\\Paynet\\\\Message\\\\RemoteAbstractRequest\\:\\:\\$endpoint\\.$#"
+			count: 1
+			path: src/Message/RemoteAbstractRequest.php
+
+		-
+			message: "#^Ternary operator condition is always true\\.$#"
+			count: 1
+			path: src/Message/RemoteAbstractRequest.php
