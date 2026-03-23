@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Server: nginx
+Content-Type: application/json
+Content-Length: 250
+
+{"code":0,"message":"","html_content":"<html><body><form id='3dform' action='https://acs.bank.com/3d' method='POST'><input type='hidden' name='PaReq' value='test123'/></form><script>document.getElementById('3dform').submit();</script></body></html>"}

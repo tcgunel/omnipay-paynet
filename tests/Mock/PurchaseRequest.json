@@ -1,0 +1,17 @@
+{
+  "secretKey": "dGVzdC1zZWNyZXQta2V5",
+  "transactionId": "ORDER-12345",
+  "amount": "150.00",
+  "installment": 1,
+  "testMode": true,
+  "card": {
+    "firstName": "Test",
+    "lastName": "User",
+    "number": "4155650100416111",
+    "expiryMonth": "01",
+    "expiryYear": "2030",
+    "cvv": "123",
+    "email": "test@example.com",
+    "phone": "5551234567"
+  }
+}

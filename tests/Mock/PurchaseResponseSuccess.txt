@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Server: nginx
+Content-Type: application/json
+Content-Length: 150
+
+{"is_succeed":true,"code":0,"message":"","xact_id":"PAY-TXN-00001","reference_no":"ORDER-12345","xact_date":"2026-03-23 10:00:00"}

@@ -1,0 +1,6 @@
+HTTP/1.1 200 OK
+Server: nginx
+Content-Type: application/json
+Content-Length: 500
+
+{"tds_required":false,"object_name":"ratio","code":0,"message":"","data":[{"bank_id":"0046","bank_logo":"https://paynet.com.tr/logos/akbank.png","bank_name":"Akbank","card_type":"VISA","tds_required":false,"ratio":[{"instalment":2,"instalment_amount":5150,"total_net_amount":10000,"total_amount":10300,"commision":300},{"instalment":3,"instalment_amount":3500,"total_net_amount":10000,"total_amount":10500,"commision":500},{"instalment":6,"instalment_amount":1800,"total_net_amount":10000,"total_amount":10800,"commision":800}]}]}

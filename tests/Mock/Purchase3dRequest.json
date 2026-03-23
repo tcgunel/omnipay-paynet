@@ -1,0 +1,18 @@
+{
+  "secretKey": "dGVzdC1zZWNyZXQta2V5",
+  "transactionId": "ORDER-3D-12345",
+  "amount": "250.00",
+  "installment": 3,
+  "testMode": true,
+  "returnUrl": "https://example.com/payment/callback",
+  "card": {
+    "firstName": "Test",
+    "lastName": "User",
+    "number": "4155650100416111",
+    "expiryMonth": "01",
+    "expiryYear": "2030",
+    "cvv": "123",
+    "email": "test@example.com",
+    "phone": "5551234567"
+  }
+}
